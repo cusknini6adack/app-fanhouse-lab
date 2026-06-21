@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球迷屋 · 轻量导航介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #eef1f5;
+            color: #1e2b3c;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e3e9f0;
+            margin-bottom: 40px;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+            letter-spacing: -0.2px;
+            color: #1e3a5f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            font-weight: 450;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #3b6ea5;
+            color: #1a3b5c;
+        }
+
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 48px 36px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e6ecf2;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 520;
+            color: #1f3a5c;
+            margin-bottom: 18px;
+            letter-spacing: -0.3px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto 16px;
+            color: #3b4d62;
+        }
+
+        .hero .meta-note {
+            font-size: 0.95rem;
+            color: #6b7e93;
+            border-top: 1px dashed #dde3ea;
+            padding-top: 18px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px 24px 26px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e9f0;
+            transition: transform 0.15s ease, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .feature-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            display: inline-block;
+            background: #f0f4fa;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            border-radius: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1f3a5c;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3d536a;
+            margin-bottom: 4px;
+        }
+
+        .scene-section {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 40px 36px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e9f0;
+            margin-bottom: 48px;
+        }
+
+        .scene-section h2 {
+            font-size: 1.6rem;
+            font-weight: 480;
+            color: #1f3a5c;
+            margin-bottom: 28px;
+            letter-spacing: -0.2px;
+            border-left: 4px solid #3b6ea5;
+            padding-left: 18px;
+        }
+
+        .scene-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+        }
+
+        .scene-item {
+            flex: 1 1 240px;
+            background: #f6f9fd;
+            padding: 22px 20px;
+            border-radius: 18px;
+            border: 1px solid #dde5ef;
+        }
+
+        .scene-item h4 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+        }
+
+        .scene-item p {
+            font-size: 0.92rem;
+            color: #3f556b;
+        }
+
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 36px 32px;
+            border: 1px solid #e2e9f0;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+        }
+
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 460;
+            color: #1f3a5c;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #eaeef4;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #1e3a5f;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .faq-item span {
+            color: #3b536b;
+            font-size: 0.93rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 24px 16px 16px;
+            font-size: 0.88rem;
+            color: #60758b;
+            border-top: 1px solid #dbe1e9;
+            margin-top: auto;
+        }
+
+        .footer-note a {
+            color: #1f3a5c;
+            text-decoration: none;
+            font-weight: 470;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-note a:hover {
+            border-bottom-color: #3b6ea5;
+        }
+
+        @media (max-width: 820px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 18px 20px;
+            }
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .scene-cards {
+                flex-direction: column;
+            }
+            .hero {
+                padding: 32px 20px;
+            }
+            .scene-section {
+                padding: 28px 20px;
+            }
+            .faq-summary {
+                padding: 28px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .nav-brand {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-brand">⚽ 球迷屋 · 轻导航</div>
+            <ul class="nav-links">
+                <li><a href="#intro">介绍</a></li>
+                <li><a href="#features">特点</a></li>
+                <li><a href="#scenes">场景</a></li>
+                <li><a href="#faq">说明</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero" id="intro">
+            <h1>关于球迷屋 · 一个安静的聚合角落</h1>
+            <p>围绕赛事、动态与社区内容，<a href="https://app-fanhouse.com" style="color: #1f3a5c; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; font-weight: 500;">球迷屋</a>提供了一种轻量浏览的方式。不必在信息洪流里翻找，它把值得关注的元素收拢在一起——比分、讨论、专栏，都留给想看的人。</p>
+            <div class="meta-note">话题覆盖多个联赛，界面偏向简洁，适合日常扫一眼。</div>
+        </div>
+
+        <div class="features-grid" id="features">
+            <div class="feature-card">
+                <div class="icon">📋</div>
+                <h3>聚合信息流</h3>
+                <p>收录比赛预告、实时比分与赛后摘要，减少在不同页面之间跳转的频率。按时间排列，便于回看。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">💬</div>
+                <h3>社区讨论</h3>
+                <p>部分内容开放评论与短评，观点自然沉淀。不会过度强调排名，更看重具体话题的延伸。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🧭</div>
+                <h3>赛事日历</h3>
+                <p>以周或月为维度展示赛程，主客场、时间、赛事阶段一目了然。适合做简单的观赛计划。</p>
+            </div>
+        </div>
+
+        <div class="scene-section" id="scenes">
+            <h2>三个常见使用场景</h2>
+            <div class="scene-cards">
+                <div class="scene-item">
+                    <h4>🏟️ 赛前快速浏览</h4>
+                    <p>想知道今晚有哪些对阵？打开相关栏目，列表清晰，直接看时间与对阵双方，不用层层点开。</p>
+                </div>
+                <div class="scene-item">
+                    <h4>📱 赛后看简讯</h4>
+                    <p>比赛结束后，短文本形式的战报或关键数据会更新，适合在地铁、间隙中快速了解结果。</p>
+                </div>
+                <div class="scene-item">
+                    <h4>🗂️ 话题跟踪</h4>
+                    <p>针对某个球队或球员的讨论，可以顺着时间线浏览，不必被算法强行推荐无关内容。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-summary" id="faq">
+            <h2>📌 常见说明</h2>
+            <div class="faq-item">
+                <strong>内容来源可靠吗？</strong>
+                <span>数据与资讯主要来自公开赛事统计及用户贡献，平台会进行基础审核，但建议结合多个渠道交叉确认。</span>
+            </div>
+            <div class="faq-item">
+                <strong>是否需要注册才能浏览？</strong>
+                <span>大部分信息以公开方式呈现，无需登录即可阅读。部分互动功能可能需要简单注册。</span>
+            </div>
+            <div class="faq-item">
+                <strong>移动端体验如何？</strong>
+                <span>页面针对手机屏幕做了基础适配，卡片布局和字体大小在窄屏下会自动调整，不至于拥挤。</span>
+            </div>
+            <div class="faq-item">
+                <strong>与官方数据有差异怎么办？</strong>
+                <span>赛事信息动态变化，偶尔存在延迟。如果发现异常，可以通过站内反馈渠道告知，后台会修正。</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>一个安静的信息节点 · </span>
+            <a href="https://app-fanhouse.com">球迷屋</a>
+            <span> · 无广告干扰，仅做内容聚合与展示</span>
+        </div>
+    </div>
+</body>
+</html>
